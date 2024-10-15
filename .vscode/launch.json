@@ -1,0 +1,54 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "backend",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": [
+                "nx",
+                "serve",
+                "backend",
+                "--configuration=development"
+            ],
+            "runtimeExecutable": "pnpm",
+            "skipFiles": ["<node_internals>/**"],
+            "sourceMaps": true,
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ],
+            "outputCapture": "std"
+        },
+        {
+            "name": "frontend",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": ["nx", "serve", "frontend"],
+            "runtimeExecutable": "pnpm",
+            "skipFiles": ["<node_internals>/**"],
+            "sourceMaps": true,
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ],
+            "outputCapture": "std",
+            "cwd": "${workspaceFolder}/apps/frontend"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "all",
+            "configurations": [
+                "backend",
+                "frontend"
+            ],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "all",
+                "order": 1
+            }
+        }
+    ]
+}
